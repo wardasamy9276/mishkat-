@@ -40,6 +40,7 @@ body, button, input, textarea {
 }
 
 /* ============================================
+/* ============================================
    SECTION: NAVBAR HEADER (DESKTOP)
    ============================================ */
 .navbar-header {
@@ -83,12 +84,11 @@ body, button, input, textarea {
     justify-content: center;
     align-items: center;
     gap: 25px;
- margin-left: 70px;
+    margin-left: 70px;
 }
 
 .nav-links li a {
     font-family: var(--font-body);
-    
     font-size: 15.2px;
     line-height: 24px;
     color: var(--body-text);
@@ -153,8 +153,6 @@ body, button, input, textarea {
 }
 
 .lang-text {
-   
-
     font-size: 15.2px;
     line-height: 100%;
     color: var(--body-text, #475569);
@@ -162,7 +160,6 @@ body, button, input, textarea {
 
 .login-btn {
     font-family: var(--font-body);
-
     font-size: 15.2px;
     color: var(--body-text);
     position: relative;
@@ -198,11 +195,7 @@ body, button, input, textarea {
     gap: 8px;
     border: none;
     border-radius: 9999px;
-    background: linear-gradient(
-        99.21deg,
-        #81CC33 0%,
-        rgba(129, 204, 51, 0.9) 100%
-    );
+    background: linear-gradient(99.21deg, #81CC33 0%, rgba(129, 204, 51, 0.9) 100%);
     cursor: pointer;
     transition: opacity 0.3s ease;
 }
@@ -216,7 +209,6 @@ body, button, input, textarea {
     align-items: center;
     justify-content: center;
     color: var(--heading-dark, #0F172A);
-
     font-size: 14px;
     line-height: 1;
     white-space: nowrap;
@@ -281,7 +273,6 @@ body, button, input, textarea {
     .login-btn {
         font-size: 15.2px;
     }
-
     .login-btn::after {
         display: none;
     }
@@ -292,7 +283,7 @@ body, button, input, textarea {
         justify-content: center;
     }
 
-    /* ====== التعديل الأساسي هنا ====== */
+    /* ====== Mobile Dropdown Menu ====== */
     .nav-menu {
         position: absolute;
         top: 20px;
@@ -301,17 +292,15 @@ body, button, input, textarea {
         width: 92%;
         max-width: 400px;
         background-color: #fff;
-        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         border-radius: 15px;
         padding: 45px 20px 25px 20px;
         z-index: 1100;
-        overflow: hidden;   /* ★ أضف هذه الخاصية ★ */
-
+        overflow: hidden; /* يحافظ على الزوايا المستديرة */
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
         transition: all 0.3s ease-in-out;
-
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -341,6 +330,7 @@ body, button, input, textarea {
         justify-content: center;
     }
 
+    /* ====== Mobile Links – Underline instead of Background ====== */
     .nav-links {
         display: flex;
         flex-direction: column;
@@ -352,166 +342,49 @@ body, button, input, textarea {
     .nav-links li {
         width: 100%;
         text-align: center;
+        border-bottom: 1px solid #f1f1f1; /* فاصل بين الروابط */
+    }
+    .nav-links li:last-child {
+        border-bottom: none;
     }
 
     .nav-links li a {
-        display: block;
-        padding: 12px;
-        border-bottom: 1px solid #f1f1f1;
+        display: inline-block;    /* الخط يظهر تحت النص فقط */
+        padding: 12px 0;
+        position: relative;
         color: var(--body-text);
         font-size: 16px;
         text-align: center;
-        border-radius: 8px; /* يمكنك الاحتفاظ بها أو إزالتها */
+        text-decoration: none;
+        transition: color 0.3s ease;
     }
 
+    /* الخط السفلي المتحرك (مخفي في البداية) */
     .nav-links li a::after {
-        display: none;
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2.5px;
+        background-color: var(--active-color);
+        border-radius: 10px;
+        transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
+    /* عند التمرير أو التفعيل: يظهر الخط */
+    .nav-links li a:hover::after,
+    .nav-links li a.active::after {
+        width: 100%;
+    }
+
+    /* تغيير لون النص – بدون أي خلفية */
     .nav-links li a:hover,
     .nav-links li a.active {
-        background-color: #f0f7f1;
         color: var(--active-color);
-        border-radius: 8px;
+        /* تم حذف background-color و border-radius نهائياً */
     }
 }
-
-    .menu-toggle {
-        display: block;
-        font-size: 22px;
-        order: 1; /* First item */
-    }
-
-    .logo {
-        order: 2; /* Second item */
-    }
-
-    /* Navbar Actions stacked in the center column */
-    .navbar-actions {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        gap: 15px;
-        order: 3; /* Third items group */
-    }
-
-    .lang-wrapper {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .lang-btn-box {
-        width: 80%;
-        max-width: 250px;
-        padding: 8px;
-        justify-content: center;
-    }
-
-    .login-btn {
-        font-size: 15.2px;
-    }
-
-    .login-btn::after {
-        display: none;
-    }
-
-    .start-btn {
-        width: 80%;
-        max-width: 250px;
-        justify-content: center;
-    }
-
-    /* Mobile Dropdown Menu Container for Links */
-  .nav-menu {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 92%;
-    max-width: 400px;
-    background-color: #fff;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-    border-radius: 15px;      /* الزوايا المستديرة */
-    padding: 45px 20px 25px 20px;
-    z-index: 1100;
-    
-    /* ★★★★★ الحل السحري ★★★★★ */
-    overflow: hidden; 
-
-    /* باقي الخصائص */
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: all 0.3s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-}
-
-    /* Active state when menu opens */
-    .nav-menu.active {
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
-    }
-
-    /* Close (X) button inside the dropdown box */
-    .menu-close {
-        display: block;
-        position: absolute;
-        top: 15px;
-        left: 20px;
-        font-size: 18px;
-        cursor: pointer;
-        color: var(--heading-dark, #0F172A);
-        background: #f1f5f9;
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    /* Stack Links Vertically Inside Dropdown */
-    .nav-links {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
-        align-items: center;
-    }
-
-    .nav-links li {
-        width: 100%;
-        text-align: center;
-    }
-
-    .nav-links li a {
-        display: block;
-        padding: 12px;
-        border-bottom: 1px solid #f1f1f1;
-        color: var(--body-text);
-        font-size: 16px;
-        text-align: center;
-    }
-
-    .nav-links li a::after {
-        display: none;
-    }
-
-    .nav-links li a:hover,
-    .nav-links li a.active {
-      
-
-    background-color: #f0f7f1;
-    color: var(--active-color);
-    border-radius: 8px; /* هذا يجعل الخلفية أنيقة */
-}
-    
-
 
 
 /* ============================================
