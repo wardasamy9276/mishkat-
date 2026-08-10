@@ -239,7 +239,6 @@ body, button, input, textarea {
    SECTION: NAVBAR RESPONSIVE (SMALL SCREENS)
    ============================================ */
 @media (max-width: 992px) {
-    /* Navbar Container as a single centered column */
     .navbar-container {
         display: flex;
         flex-direction: column;
@@ -247,6 +246,135 @@ body, button, input, textarea {
         gap: 15px;
         padding: 20px 0;
     }
+
+    .menu-toggle {
+        display: block;
+        font-size: 22px;
+        order: 1;
+    }
+
+    .logo {
+        order: 2;
+    }
+
+    .navbar-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 15px;
+        order: 3;
+    }
+
+    .lang-wrapper {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .lang-btn-box {
+        width: 80%;
+        max-width: 250px;
+        padding: 8px;
+        justify-content: center;
+    }
+
+    .login-btn {
+        font-size: 15.2px;
+    }
+
+    .login-btn::after {
+        display: none;
+    }
+
+    .start-btn {
+        width: 80%;
+        max-width: 250px;
+        justify-content: center;
+    }
+
+    /* ====== التعديل الأساسي هنا ====== */
+    .nav-menu {
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 92%;
+        max-width: 400px;
+        background-color: #fff;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        border-radius: 15px;
+        padding: 45px 20px 25px 20px;
+        z-index: 1100;
+        overflow: hidden;   /* ★ أضف هذه الخاصية ★ */
+
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: all 0.3s ease-in-out;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .nav-menu.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    .menu-close {
+        display: block;
+        position: absolute;
+        top: 15px;
+        left: 20px;
+        font-size: 18px;
+        cursor: pointer;
+        color: var(--heading-dark, #0F172A);
+        background: #f1f5f9;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        align-items: center;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links li a {
+        display: block;
+        padding: 12px;
+        border-bottom: 1px solid #f1f1f1;
+        color: var(--body-text);
+        font-size: 16px;
+        text-align: center;
+        border-radius: 8px; /* يمكنك الاحتفاظ بها أو إزالتها */
+    }
+
+    .nav-links li a::after {
+        display: none;
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a.active {
+        background-color: #f0f7f1;
+        color: var(--active-color);
+        border-radius: 8px;
+    }
+}
 
     .menu-toggle {
         display: block;
@@ -378,7 +506,7 @@ body, button, input, textarea {
         color: var(--active-color);
         border-radius: 8px;
     }
-}
+
 
 
 /* ============================================
